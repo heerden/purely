@@ -17,39 +17,35 @@ GNU AGPLv3
 
 ## Core technology choices
 
-| #  | Technology                     | Purpose                                                                                                                                      | License                                                 |
-|----|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
-| 1  | ASP.NET Core                   | Cross-platform framework for building backend APIs and web applications in C#                                                                | MIT                                                     |
-| 2  | Kubernetes                     | Orchestrates containerized applications, enabling scalable, reproducible, and fault-tolerant deployments                                     | Apache 2.0                                              |
-| 3  | Vespa                          | A search and recommendation engine that combines vector, text, tensor, and structured data processing                                        | Apache 2.0                                              |
-| 4  | Sentence Transformers (SBERT)  | Pre-trained NLP models that generate high-quality vector embeddings for semantic search and similarity tasks                                 | Apache 2.0                                              |
-| 5  | PostgreSQL                     | An open-source relational database with advanced features like JSON support and strong ACID compliance                                       | PostgreSQL License (similar to MIT)                     |
-| 6  | TimescaleDB                    | A PostgreSQL-based time-series database optimized for scalability and analytics on time-series data for both model telemetry and system logs | Timescale License (TSL), Apache 2.0 (community edition) |
-| 7  | RabbitMQ                       | A reliable message broker that enables asynchronous communication between services using various messaging protocols                         | MPL 2.0                                                 |
-| 8  | MinIO                          | An S3-compatible object storage solution designed for high-performance, scalable cloud storage                                               | AGPL v3 (Apache 2.0 for older versions)                 |
-| 9  | Traefik                        | A modern cloud-native reverse proxy and load balancer for routing internal and external traffic                                              | MIT                                                     |
-| 10 | Smallstep                      | An internal certificate authority (CA) and identity system for managing TLS certificates and authentication                                  | Apache 2.0                                              |
-| 11 | Let's Encrypt                  | A free, automated, and open certificate authority for securing external web services with TLS                                                | ISRG Certificate Policy (open and free use)             |
-| 12 | Airbyte                        | Batch data ingestion and ETL for various data sources into PURE                                                                              | ELv2 (Elastic License)                                  |
-| 13 | Temporal.io                    | Workflow orchestration and scheduling for handling complex business processes and task dependencies                                          | MIT                                                     |
-| 14 | Lucene (NuGet)                 | Full-text search engine for indexing and searching structured/unstructured data                                                              | Apache 2.0                                              |
-| 15 | PDFSharp (NuGet)               | PDF document processing library for transformation and manipulation                                                                          | MIT                                                     |
-| 16 | Schema.net (NuGet)             | Provides standardized semantic vocabularies for enriching and structuring data                                                               | MIT                                                     |
-| 17 | tryAGI.net (NuGet)             | A ML model management library for handling inference and training workflows                                                                  | Apache 2.0                                              |
-| 18 | Horizontal Pod Autoscaler (K8) | Auto-scales Kubernetes workloads based on CPU, memory, or custom metrics                                                                     | Apache 2.0                                              |
-| 19 | OpenTelemetry Connectors       | Collects and exports telemetry data (traces, metrics, logs) for observability                                                                | Apache 2.0                                              |
-| 20 | Prometheus                     | A monitoring system for collecting and querying time-series metrics                                                                          | Apache 2.0                                              |
-| 21 | Grafana Tempo                  | Distributed tracing backend for storing and querying traces                                                                                  | AGPL v3                                                 |
-| 22 | Grafana                        | Visualization platform for real-time monitoring and dashboards                                                                               | AGPL v3                                                 |
+| #  | Technology                   | Purpose                                                                                                         | License                              |
+|----|------------------------------|-----------------------------------------------------------------------------------------------------------------|--------------------------------------|
+| 1  | ASP.NET Core                 | High-performance backend runtime for ETL daemons, internal gRPC endpoints, and service APIs                     | MIT                                  |
+| 2  | Vespa                        | Search and computation engine combining vector embeddings, sparse text matching, and structured tensors         | Apache 2.0                           |
+| 3  | Sentence Transformers (SBERT) | Open-source language and feature models for generating dense embeddings and semantic representations           | Apache 2.0                           |
+| 4  | PostgreSQL                   | ACID-compliant relational store for tenant configuration, relational entities, and platform metadata            | PostgreSQL License                   |
+| 5  | TimescaleDB                  | Hypertable engine acting as an immutable, append-only landing zone for raw telemetry snapshots                  | Timescale License (TSL) / Apache 2.0 |
+| 6  | EMQX                         | Massively scalable, distributed MQTT broker terminating field sensor sessions and protocol bridges (CoAP/LwM2M) | Apache 2.0                           |
+| 7  | Redpanda                     | A minimal overhead streaming data platform (Kafka compatible)                                                   | BSL 1.1                              |
+| 8  | MinIO                        | S3-compatible, high-performance object storage for raw artefacts, documents, and model binaries                 | AGPLv3                               |
+| 9  | Traefik                      | Edge reverse proxy and dynamic load balancer for HTTP/gRPC ingress routing                                      | MIT                                  |
+| 10 | Smallstep                    | Internal automated Certificate Authority (CA) managing zero-trust mTLS service-to-service identity              | Apache 2.0                           |
+| 11 | Airbyte                      | ELT engine for pulling scheduled and ad-hoc batches from external third-party sources                           | ELv2                                 |
+| 12 | Temporal.io                  | Resilient workflow engine orchestrating complex, fault-tolerant batch ETL lifecycles                            | MIT                                  |
+| 13 | PDFSharp (NuGet)             | Document extraction and layout manipulation engine                                                              | MIT                                  |
+| 14 | Schema.net (NuGet)           | Strongly-typed semantic taxonomy vocabularies for data normalization                                            | MIT                                  |
+| 15 | tryAGI.net (NuGet)           | Managed C# abstractions for local model execution and inference integration                                     | Apache 2.0                           |
+| 16 | HashiCorp Nomad              | Declarative workload orchestrator deploying the stack as a unified, vertically scaled block                     | BSL 1.1                              |
+| 17 | OpenTelemetry                | Distributed tracing and metrics instrumentation across all custom .NET runtimes                                 | Apache 2.0                           |
+| 18 | Prometheus                   | Time-series monitoring store scraping operational service metrics                                               | Apache 2.0                           |
+| 19 | Grafana Tempo                | High-volume distributed tracing backend mapping cross-service gRPC spans                                        | AGPLv3                               |
+| 20 | Grafana                      | Centralized operational observability dashboards and visualization layer                                        | AGPLv3                               |
 
 ## Future Considerations
 
-| #  | Technology       | Purpose                                                                                                                                         | License               |
-|----|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| 1  | Apache Tika      | Multi-format document parsing and metadata extraction (potential replacement for PDFSharp)                                                      | Apache 2.0            |
-| 2  | EdgeX Foundry    | Open-source platform to ingress and manage diverse IIoT protocols                                                                               | Apache 2.0            |
-| 3  | Apache NiFi      | Batch data ingestion and ETL for various data sources into PURE (potential replacement for Airbyte based on performance and licence evaluation) | Apache 2.0            |
-| 4  | Terraform        | Infrastructure as Code (IaC) tool for automating cloud and on-prem resource provisioning                                                        | MPL 2.0               |
+| #  | Technology                     | Purpose                                                                                                         | License                              |
+|----|--------------------------------|-----------------------------------------------------------------------------------------------------------------|--------------------------------------|
+| 1  | EdgeX Foundry                  | Industrial protocol translation framework (Modbus, BACnet, OPC-UA) bridging field hardware to EMQX              | Apache 2.0                           |
+| 2  | TDengine                       | Purpose-built, high-compression industrial big-data historian for long-term time-series cold storage            | AGPLv3                               |
 
 ## Architecture
 
